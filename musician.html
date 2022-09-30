@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+ <head>
+
+    <title>Welcome to Lab6</title>
+
+ </head>
+
+<h2>Musician guess by Haritha Kothalachinta</h2> 
+
+<body> 
+
+    <form>
+        <label for="s_name">Enter the secret musician name</label>
+        <input type ="password" id="s_name" name="s_name" min=10 max=50 step=2 value="john Lennon"> <br>
+    
+        <label for="guess">Guess the musician</label>
+        <input type ="text" id="guess" name="guess" autofocus><br>
+    
+        <input type="button" onclick="checkGuess()" value="Check the guess">
+    </form>
+    
+    
+    <p id="result">This text will be displayed </p> 
+    
+    <script>  
+    correct=0;
+    wrong=0;  
+    
+    function checkGuess(){
+        console.log("check the musician")
+        pass = document.getElementById("s_name").value
+        guess = document.getElementById("guess").value
+        if(pass==guess)
+        {
+            correct=correct+1
+            alert("you got it right")
+        }
+        else
+        {
+            wrong=wrong+1
+            alert("wrong musician")
+        }
+       result.innerHTML="correct guess:"+correct+"wrong"+wrong
+    }
+    
+    </script> 
+
+</body>
+</html> 
+    
