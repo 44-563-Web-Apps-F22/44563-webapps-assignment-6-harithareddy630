@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
- <head>
+<head>
 
     <title>Welcome to Lab6</title>
 
  </head>
 
-<h2>Musician guess by Haritha Kothalachinta</h2> 
-
-<body> 
+ <body>
+    <div class="container p-5 my-5 bg-primary text-white">    
+        <h1 style="text-align:center">Musician guess by Haritha Kothalachinta</h1>
+        <h2 style="text-align: center">Getting input</h2>
+    </div>
 
     <form>
         <label for="s_name">Enter the secret musician name</label>
@@ -23,7 +25,7 @@
     
     <p id="result">This text will be displayed </p> 
     
-    <script>  
+<script>  
     correct=0;
     wrong=0;  
     
@@ -46,27 +48,31 @@
     
 </script>
 
-<div><img src="Killer Ant.jpg" alt="image1" width="100" height="100" id="onclickimage" onclick="swapImage()"></div>
+<br>
 
+<div class="container">
+    <img src="Killer Ant.jpg" class="bordered mx-auto d-block" width="100px" height="100px" alt="Killer Ant" id="images" onclick="swapImage()">
+</div>
 <script>
-    useImage=1;
+    let useImage = 1
     function swapImage(){
-        switch(useImage){
-            case 1://siwtching images 
-                document.getElementById("onclickimage").src="Killer Ant.jpg";
-                useImage=useImage+1;
-                break;
+    switch(useImage){
+        case 1:
+            document.getElementById("images").src="Killer Ant.jpg";
+            useImage+=1;
+            break;
             case 2:
-                document.getElementById("onclickimage").src="Owl Fly.jpg";
-                useImage=useImage+1;
-                break;
+            document.getElementById("images").src="Owl Fly.jpg";
+            useImage+=1;
+            break;
             case 3:
-                document.getElementById("onclickimage").src="Termites.jfif";
-                useImage=1;
-                break;     
-                
-        } 
+            document.getElementById("images").src="Termites.jfif";
+            useImage=1;
+            break;
+        }
     }
-</script>
+</script> 
+ 
+</div>
 </body>
 </html>  
