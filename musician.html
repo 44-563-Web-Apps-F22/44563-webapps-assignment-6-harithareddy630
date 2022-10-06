@@ -29,8 +29,41 @@
     
     
     <p id="result">This text will be displayed </p> 
+
+    <script>
+        function resolveForm() {
+            console.log("Getting form values")
+            age = document.getElementById("form1_age").value
+            nick = document.getElementById("form1_nick").value
+            confirmed = confirm("Are these the values? " + age + " and " + nick)
     
-<script>  
+            out = document.getElementById("result")
+            if (confirmed) {
+                out.innerHTML = "Values were confirmed"
+            } else {
+                out.innerHTML = "Values were not confirmed"
+            }
+        }
+    </script>
+
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="form2_musician">Enter the secret musician name</label>
+            <input type="password" class="form-control" id="form2_musician" name="form2_musician" min=10 max=50 step=2
+                value="John Lennon"><br>
+        </div>
+        <div class="form-group">
+            <label for="form2_guess">Guess the musician</label>
+            <input type="text" class="form-control" id="form2_guess" name="form2_guess" min=10 max=50 step=2><br>
+        </div>
+        <input type="button" class="btn btn-success" onclick="checkGuess()" value="Check the guess">
+    </form>
+    
+    <p id="results"></p>
+</div>
+
+<script>
     let correct=0
     let wrong=0
     let try_correct = 0
@@ -50,7 +83,7 @@
             try_wrong= try_wrong + 1
             alert("Wrong Musician");
             if(try_correct==0 && try_wrong%3==0 && try_wrong!=0) {
-                alert("Sorry, game over.");
+                alert("Sorry, Game Over.");
                 wrong = 0  
                 correct = 0
             } else if(try_correct>0){
@@ -60,8 +93,9 @@
             document.getElementById("results").innerHTML = "Correct guesses are " + correct + " and Wrong guesses are " + wrong   
         }
     }
-</script> 
+</script>
 <br>
+    
 
 <div class="container">
     <img src="Killer Ant.jpg" class="bordered mx-auto d-block" width="100px" height="100px" alt="Killer Ant" id="images" onclick="swapImage()">
@@ -95,4 +129,4 @@
 
 </div>
 </body>
-</html>    
+</html>       
