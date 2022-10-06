@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 
     <title>Welcome to Lab6</title>
 
@@ -29,73 +29,31 @@
     
     
     <p id="result">This text will be displayed </p> 
-
-    <script>
-        function resolveForm() {
-            console.log("Getting form values")
-            age = document.getElementById("form1_age").value
-            nick = document.getElementById("form1_nick").value
-            confirmed = confirm("Are these the values? " + age + " and " + nick)
     
-            out = document.getElementById("result")
-            if (confirmed) {
-                out.innerHTML = "Values were confirmed"
-            } else {
-                out.innerHTML = "Values were not confirmed"
-            }
+<script>  
+    correct=0;
+    wrong=0;  
+    
+    function checkGuess(){
+        console.log("check the musician")
+        pass = document.getElementById("s_name").value
+        guess = document.getElementById("guess").value
+        if(pass==guess)
+        {
+            correct=correct+1
+            alert("you got it right")
         }
-    </script>
-
-<div class="container">
-    <form>
-        <div class="form-group">
-            <label for="form2_musician">Enter the secret musician name</label>
-            <input type="password" class="form-control" id="form2_musician" name="form2_musician" min=10 max=50 step=2
-                value="John Lennon"><br>
-        </div>
-        <div class="form-group">
-            <label for="form2_guess">Guess the musician</label>
-            <input type="text" class="form-control" id="form2_guess" name="form2_guess" min=10 max=50 step=2><br>
-        </div>
-        <input type="button" class="btn btn-success" onclick="checkGuess()" value="Check the guess">
-    </form>
-    
-    <p id="results"></p>
-</div>
-
-<script>
-    let correct=0
-    let wrong=0
-    let try_correct = 0
-    let try_wrong = 0 
-    function checkGuess() {
-        secret = document.getElementById("form2_musician").value
-        guess = document.getElementById("form2_guess").value
-    
-        result = document.getElementById("results")
-        if(secret == guess){
-            correct+=1
-            try_correct=try_correct + 1
-            alert("You got it right");
-            document.getElementById("results").innerHTML = "Correct guesses are " + correct + " and Wrong guesses are " + wrong
-        } else { 
-            wrong+=1
-            try_wrong= try_wrong + 1
-            alert("Wrong Musician");
-            if(try_correct==0 && try_wrong%3==0 && try_wrong!=0) {
-                alert("Sorry, Game Over.");
-                wrong = 0  
-                correct = 0
-            } else if(try_correct>0){
-                try_correct=0
-                try_wrong=0
-            }
-            document.getElementById("results").innerHTML = "Correct guesses are " + correct + " and Wrong guesses are " + wrong   
+        else
+        {
+            wrong=wrong+1
+            alert("wrong musician")
         }
+       result.innerHTML="correct guess:"+correct+"wrong"+wrong
     }
-</script>
-<br>
     
+</script>
+
+<br>
 
 <div class="container">
     <img src="Killer Ant.jpg" class="bordered mx-auto d-block" width="100px" height="100px" alt="Killer Ant" id="images" onclick="swapImage()">
@@ -118,15 +76,25 @@
             break;
         }
     }
+</script>  
+
+<script>
+    function EndoftheGame()
+    {
+        while (wrong==3) 
+        {
+            if (wrong >=3) {
+                wrong -= 4
+                alert("Sorry, game over.")
+            }
+            else {
+                alert("You got it right")
+                document.getElementById("result").innerHTML = "Correct count:" + correct + " " + "Wrong count:" + wrong
+            }
+        }
+    }
 </script>   
-
-<div class="container">
-    <ul class="pager">
-        <li class="next">
-            <a href="discount.html">Discount Page</a>
-        </li>
-    </ul>
-
+ 
 </div>
 </body>
-</html>       
+</html>
