@@ -31,28 +31,36 @@
     <p id="result">This text will be displayed </p> 
     
 <script>  
-    correct=0;
-    wrong=0;  
+    let correct=0
+    let wrong=0
+    let try_correct = 0
+    let try_wrong = 0 
+    function checkGuess() {
+        secret = document.getElementById("form2_musician").value
+        guess = document.getElementById("form2_guess").value
     
-    function checkGuess(){
-        console.log("check the musician")
-        pass = document.getElementById("s_name").value
-        guess = document.getElementById("guess").value
-        if(pass==guess)
-        {
-            correct=correct+1
-            alert("you got it right")
+        result = document.getElementById("results")
+        if(secret == guess){
+            correct+=1
+            try_correct=try_correct + 1
+            alert("You got it right");
+            document.getElementById("results").innerHTML = "Correct guesses are " + correct + " and Wrong guesses are " + wrong
+        } else { 
+            wrong+=1
+            try_wrong= try_wrong + 1
+            alert("Wrong Musician");
+            if(try_correct==0 && try_wrong%3==0 && try_wrong!=0) {
+                alert("Sorry, game over.");
+                wrong = 0  
+                correct = 0
+            } else if(try_correct>0){
+                try_correct=0
+                try_wrong=0
+            }
+            document.getElementById("results").innerHTML = "Correct guesses are " + correct + " and Wrong guesses are " + wrong   
         }
-        else
-        {
-            wrong=wrong+1
-            alert("wrong musician")
-        }
-       result.innerHTML="correct guess:"+correct+"wrong"+wrong
     }
-    
-</script>
-
+</script> 
 <br>
 
 <div class="container">
@@ -76,25 +84,15 @@
             break;
         }
     }
-</script>  
-
-<script>
-    function EndoftheGame()
-    {
-        while (wrong==3) 
-        {
-            if (wrong >=3) {
-                wrong -= 4
-                alert("Sorry, game over.")
-            }
-            else {
-                alert("You got it right")
-                document.getElementById("result").innerHTML = "Correct count:" + correct + " " + "Wrong count:" + wrong
-            }
-        }
-    }
 </script>   
- 
+
+<div class="container">
+    <ul class="pager">
+        <li class="next">
+            <a href="discount.html">Discount Page</a>
+        </li>
+    </ul>
+
 </div>
 </body>
-</html>  
+</html>    
